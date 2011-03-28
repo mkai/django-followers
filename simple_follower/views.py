@@ -21,8 +21,8 @@ def _get_next(request):
     return request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
 
 FRIEND_FUNCTION_MAP = {
-    'followers': get_people_user_follows,
-    'following': get_people_following_user,
+    'followers': get_people_following_user,
+    'following': get_people_user_follows,
     'mutual': get_mutual_followers,
 }
 
@@ -95,30 +95,30 @@ def unfollow(request, username):
     )
 unfollow = login_required(unfollow)
 
-def find_and_add(request):
-    """
-    A page for finding and adding new friends to follow.  Right now this
-    consists solely of a search box, which given input, renders a list of
-    users who match the search terms.
-    """
-    search_form = SearchForm(request.GET or None)
-    context = {
-        'search_form': search_form,
-    }
-    if search_form.is_valid():
-        q = search_form.cleaned_data['q']
-        context['q'] = q
-        users = User.objects.filter(username__icontains=q) | User.objects.filter(
-            email__icontains=q)
-    else:
-        users = []
-    friends = get_people_user_follows(request.user)
-    users = [(u, u in friends) for u in users]
-    context['users'] = users
-    context['user_count'] = len(users)
-    return render_to_response(
-        'simple_follower/find_add.html',
-        context,
-        context_instance = RequestContext(request)
-    )
-find_and_add = login_required(find_and_add)
+# def find_and_add(request):
+#     """
+#     A page for finding and adding new friends to follow.  Right now this
+#     consists solely of a search box, which given input, renders a list of
+#     users who match the search terms.
+#     """
+#     search_form = SearchForm(request.GET or None)
+#     context = {
+#         'search_form': search_form,
+#     }
+#     if search_form.is_valid():
+#         q = search_form.cleaned_data['q']
+#         context['q'] = q
+#         users = User.objects.filter(username__icontains=q) | User.objects.filter(
+#             email__icontains=q)
+#     else:
+#         users = []
+#     friends = get_people_user_follows(request.user)
+#     users = [(u, u in friends) for u in users]
+#     context['users'] = users
+#     context['user_count'] = len(users)
+#     return render_to_response(
+#         'simple_follower/find_add.html',
+#         context,
+#         context_instance = RequestContext(request)
+#     )
+# find_and_add = login_required(find_and_add)

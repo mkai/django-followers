@@ -29,9 +29,9 @@ urlpatterns = patterns('simple_follower.views',
         'unfollow',
         name='sg_unfollow'
     ),
-    url(
-        r'^find-and-add/$',
-        'find_and_add',
-        name='sg_find_add'
-    ),
+    # url(
+    #     r'^find-and-add/$',
+    #     'find_and_add',
+    #     name='sg_find_add'
+    # ),
 )
