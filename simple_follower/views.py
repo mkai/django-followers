@@ -83,6 +83,7 @@ def unfollow(request, username):
     if next and next != request.path:
         # request.user.message_set.create(
         #    message=_('You are no longer following %s') % user.username)
+
         return HttpResponseRedirect(next)
     context = {
         'other_user': user,
