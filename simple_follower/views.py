@@ -53,8 +53,8 @@ def follow(request, username):
         to_user=user)
     next = _get_next(request)
     if next and next != request.path:
-        request.user.message_set.create(
-            message=_('You are now following %s') % user.username)
+        # request.user.message_set.create(
+        #     message=_('You are now following %s') % user.username)
         return HttpResponseRedirect(next)
     context = {
         'other_user': user,
@@ -81,8 +81,8 @@ def unfollow(request, username):
         deleted = False
     next = _get_next(request)
     if next and next != request.path:
-        request.user.message_set.create(
-            message=_('You are no longer following %s') % user.username)
+        # request.user.message_set.create(
+        #    message=_('You are no longer following %s') % user.username)
         return HttpResponseRedirect(next)
     context = {
         'other_user': user,
