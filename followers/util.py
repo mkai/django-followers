@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from simple_follower.models import UserLink
+from followers.models import UserLink
 
 def get_people_user_follows(user):
     """

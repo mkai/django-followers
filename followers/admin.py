@@ -1,4 +1,4 @@
 from django.contrib import admin
-from simple_follower.models import UserLink
+from followers.models import UserLink
 
 admin.site.register(UserLink)

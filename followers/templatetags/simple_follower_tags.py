@@ -1,5 +1,5 @@
 from django import template
-from simple_follower.util import get_people_user_follows as _get_people_user_follows, get_people_following_user as _get_people_following_user, get_mutual_followers as _get_mutual_followers
+from followers.util import get_people_user_follows as _get_people_user_follows, get_people_following_user as _get_people_following_user, get_mutual_followers as _get_mutual_followers
 
 register = template.Library()
 

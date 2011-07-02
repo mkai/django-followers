@@ -4,10 +4,10 @@ from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from simple_follower.models import UserLink
-from simple_follower.util import get_people_user_follows, get_people_following_user
-from simple_follower.util import get_mutual_followers
-from simple_follower.forms import SearchForm
+from followers.models import UserLink
+from followers.util import get_people_user_follows, get_people_following_user
+from followers.util import get_mutual_followers
+from followers.forms import SearchForm
 
 def _get_next(request):
     """
@@ -38,7 +38,7 @@ def friend_list(request, list_type, username):
         'friends': FRIEND_FUNCTION_MAP[list_type](user),
     }
     return render_to_response(
-        'simple_follower/friend_list.html',
+        'followers/friend_list.html',
         context,
         context_instance = RequestContext(request)
     )
@@ -61,7 +61,7 @@ def follow(request, username):
         'created': created,
     }
     return render_to_response(
-        'simple_follower/followed.html',
+        'followers/followed.html',
         context,
         context_instance = RequestContext(request)
     )
@@ -90,7 +90,7 @@ def unfollow(request, username):
         'deleted': deleted,
     }
     return render_to_response(
-        'simple_follower/unfollowed.html',
+        'followers/unfollowed.html',
         context,
         context_instance = RequestContext(request)
     )
@@ -118,7 +118,7 @@ unfollow = login_required(unfollow)
 #     context['users'] = users
 #     context['user_count'] = len(users)
 #     return render_to_response(
-#         'simple_follower/find_add.html',
+#         'followers/find_add.html',
 #         context,
 #         context_instance = RequestContext(request)
 #     )
