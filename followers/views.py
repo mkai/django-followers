@@ -5,8 +5,8 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from followers.models import UserLink
-from followers.util import get_people_user_follows, get_people_following_user
-from followers.util import get_mutual_followers
+from followers.utils import get_people_user_follows, get_people_following_user
+from followers.utils import get_mutual_followers
 from followers.forms import SearchForm
 
 def _get_next(request):
