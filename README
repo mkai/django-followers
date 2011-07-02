@@ -1,2 +1,2 @@
-Django follower/ following implementation taken and adapted from https://github.com/ericflo/startthedark/socialgraph.
+Simple follow/ unfollow implementation for users, adapted from ericflo's starkthedark project (https://github.com/ericflo/startthedark/socialgraph).
 Thanks ericflo!
